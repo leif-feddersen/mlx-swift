@@ -330,7 +330,9 @@ let package = Package(
 
     products: [
         // main targets
-        .library(name: "MLXDynamic", type: .dynamic, targets: ["MLX"]),
+        // Automatic linkage lets an application share each MLX target once across
+        // Kokoro and Misaki instead of embedding it in multiple dynamic libraries.
+        .library(name: "MLX", targets: ["MLX"]),
         .library(name: "MLXRandom", targets: ["MLXRandom"]),
         .library(name: "MLXNN", targets: ["MLXNN"]),
         .library(name: "MLXOptimizers", targets: ["MLXOptimizers"]),
